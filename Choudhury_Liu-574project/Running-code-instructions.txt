@@ -1,0 +1,78 @@
+R and Python both language were used for this project.
+
+List of code files and required library
+
+R required library:
+
+	library(tidyverse)
+	library(data.table)
+	library(lubridate)
+	library(sp)
+	library(rgeos)
+	library(geosphere)
+	library(dplyr)
+
+Python required library
+
+	import pandas as pd
+	import numpy as np
+	from datetime import datetime
+	import sys
+	from collections import defaultdict
+	from datetime import timedelta	
+	from dateutil.relativedelta import relativedelta
+	import os
+	from pprint import pprint
+	import warnings
+	from fbprophet import Prophet
+	from fbprophet.plot import add_changepoints_to_plot
+	import pystan.misc # in model.fit(): AttributeError: module 'pystan' has no attribute 'misc'
+	import matplotlib.pyplot as plt
+	import matplotlib.cm as cm
+	import matplotlib
+	from matplotlib.ticker import ScalarFormatter
+	%matplotlib inline
+	import optuna
+	optuna.logging.disable_default_handler()
+	import dask.dataframe as dd
+	pd.plotting.register_matplotlib_converters()
+	import seaborn as sns
+	from scipy.integrate import solve_ivp
+	from sklearn.feature_extraction.text import TfidfVectorizer
+	from sklearn.cluster import KMeans
+	import csv
+
+Note: All code files need to change the data location (path)
+
+1. python notebook "covid_19_sir_sird_trend_pred.ipynb" will create files 
+	change_date.csv
+	sir_predict.csv
+	sird_predict.csv
+	trend_predict.csv
+	
+  Need to chage data location in variable 'path'. This file will take input from "train_data.csv"
+
+Note: some python functions (needed to modify though) of this code file is taken from
+	https://www.kaggle.com/lisphilar/covid-19-data-with-sir-model
+
+2. R code "rcode.R" will prepare features based on country information
+   It will produce "final_dt.csv" that contains countrywise indicator information
+   It code require "selected indicator_wdi_sub_all.csv" file.
+
+3. Python notebook "Covid_19_Data_Prep_Allcountries.ipynb" will generate 
+   "Cluster_territoy.csv"
+
+4. R code "train_data.R" will create a new train data named "new_train.csv"
+
+5. R code "joindata.R" will combine all csv files and create the final "train_data.csv"
+
+6. Python code "covid_19_function.py" contains all necessary python functions to prepare
+   final data and model fit. This file will be used in folloing python notebooks
+
+7. Finally python notebook "moel_fit.ipynb" will fit models on train data and 
+   produce output and plots.
+
+Note: Some code needs more than 12 hours to produce output. If you don't want to produce all
+      data files you can run just last file to see the model fit.
+
+Please let me know if you have any questions. Email: kanakc@iastate.edu
